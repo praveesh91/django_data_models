@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import get_list_or_404, render
+from django.http import Http404
 
 from .models import Book
 
@@ -11,11 +12,15 @@ def index(request):
     })
 
 def book_detail(request, id):
-    book = Book.objects.get(pk=id)
-    print(book)
+    # try:
+    #     book = Book.objects.get(pk=id)
+    # except:
+    #     raise Http404()
+    book = get_list_or_404(Book,pk=id)
     return render(request,"book_outlet/book_detail.html",{
         "title":book.title,
         "author":book.author,
         "rating":book.rating,
         "is_bestseller":book.is_best_selling,
     })
+
