@@ -4,12 +4,12 @@
 
 {% block content %}
     <h2>{{title}}</h2>
-    <h3>{{author}}</h3>
+    <h3>{{author|title}}</h3>
     <p>The book has a rating of {{rating}}
-        {% if is_bestseller %}
+    {% if is_bestseller %}
         and is a best seller
-        {% else %}
+    {% else %}
         but is not a best seller
-        {{% endif %}}
+    {% endif %}
     </p>
 {% endblock %}
