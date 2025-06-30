@@ -17,6 +17,7 @@ class Book(models.Model):
     def get_absolute_url(self):
         return reverse("book-detail", args=[self.slug])
     
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super().save(*args,**kwargs)
+    # Adds slug while saving while creating objects through shell
+    # def save(self, *args, **kwargs):
+    #     self.slug = slugify(self.title)
+    #     super().save(*args,**kwargs)
