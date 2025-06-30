@@ -7,7 +7,7 @@ from .models import Book
 # Create your views here.
 
 def index(request):
-    books = Book.objects.all()
+    books = Book.objects.all().order_by("title")
     num_books = books.count()
     avg_rating = books.aggregate(Avg("rating"))
 
